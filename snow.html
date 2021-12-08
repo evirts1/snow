@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:black;overflow: hidden;">
+<FORM METHOD=POST ACTION="">
+<div id="i1" style="position:absolute;top:0;left:100px;width:1px;height:1px;background-color:white;"></div>
+</FORM>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+//alert('hello');
+var sp = 0,fx = Math.random() * screen.width;//start position
+
+function main(){
+fx = fx + (1 - Math.random() * 2);
+i1.style.top = sp + 'px';
+i1.style.left = fx + 'px';
+ sp++;
+ if(sp >= screen.height){
+ sp=0;
+ fx = Math.random() * screen.width;
+ il.style.height = 10 + 'px';
+ il.style.width = 10 + 'px';
+ // + math.random() * 40 + 'px';
+ }
+}
+setInterval('main()',(Math.random() * 10));
+//-->
+</SCRIPT>
+</body>
+</html>
