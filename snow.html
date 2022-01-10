@@ -1,29 +1,63 @@
 <!DOCTYPE html>
 <html>
-<body style="background-color:black;overflow: hidden;">
-<FORM METHOD=POST ACTION="">
-<div id="i1" style="position:absolute;top:0;left:100px;width:1px;height:1px;background-color:white;"></div>
-</FORM>
-<SCRIPT LANGUAGE="JavaScript">
-<!--
-//alert('hello');
-var sp = 0,fx = Math.random() * screen.width;//start position
+<body style='overflow: hidden;' bgcolor='#000000'>
+<script>
 
+var t = 0,l=0;
+var cnt = Math.random() * 200;
+var i = 0;
+var r = 0;
+var g = 0;
+var b = 0;
+var newRGB = "";
 function main(){
-fx = fx + (1 - Math.random() * 2);
-i1.style.top = sp + 'px';
-i1.style.left = fx + 'px';
- sp++;
- if(sp >= screen.height){
- sp=0;
- fx = Math.random() * screen.width;
- il.style.height = 10 + 'px';
- il.style.width = 10 + 'px';
- // + math.random() * 40 + 'px';
- }
+
+	r = (Math.floor(Math.random() * 200)+55).toString(16);
+	g = (Math.floor(Math.random() * 200)+55).toString(16);
+	b = (Math.floor(Math.random() * 200)+55).toString(16);
+	newRGB = '#' + r + g + b;
+		
+	i = Math.floor(Math.random() * cnt);
+	t = (document.getElementById("star"+i).style.top).split("px")[0]; 
+	l = (document.getElementById("star"+i).style.left).split("px")[0]; 
+	
+	if(Math.floor(Math.random() * 2) == 0)
+	   l++;
+	   else
+	   l--;
+	
+	if(Math.floor(Math.random() * 2) == 0)
+	   {t++;t++;}
+	   else
+	   {t++;}
+	
+	document.getElementById("star"+i).style.top = t+"px"; 
+	document.getElementById("star"+i).style.left = l+"px"; 
+    document.getElementById("star"+i).style.backgroundColor = newRGB;
+	
+	if(t >= screen.availHeight){
+		t=0;
+		document.getElementById("star"+i).style.top = t+"px"; 
+		document.getElementById("star"+i).style.left = Math.floor(Math.random() * screen.availWidth) + "px"; 
+		
+	}
 }
-setInterval('main()',(Math.random() * 10));
-//-->
-</SCRIPT>
+	genSnowFlakes(cnt);
+	setInterval('main()',0);
+function genSnowFlakes(sc)
+{
+  var posx = 0.0,posy = 0.0;
+  for(var i = 0;i < sc; i++)
+  {
+    posx = Math.floor(Math.random() * screen.availWidth); //(i * sc);
+	posy = Math.floor(Math.random() * screen.availHeight)*-1;
+	size = Math.floor(Math.random() * 19)+1;
+  	document.write("<DIV id=star"+i+" style='LEFT: "+posx+"px; POSITION: absolute; TOP: "+posy+"px; height:"+size+"px; width:"+size+"px; background-color:white;'></DIV>");
+  }
+  return;
+}
+
+</script>
+
 </body>
 </html>
