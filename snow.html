@@ -10,6 +10,11 @@ var r = 0;
 var g = 0;
 var b = 0;
 var newRGB = "";
+var d = new Date();
+var month = (d.getMonth() + 1);
+var day =  d.getDate();
+//alert(day);
+//alert(d.getMonth() + 1);
 function main(){
 
 	r = (Math.floor(Math.random() * 200)+55).toString(16);
@@ -33,7 +38,15 @@ function main(){
 	
 	document.getElementById("star"+i).style.top = t+"px"; 
 	document.getElementById("star"+i).style.left = l+"px"; 
-    document.getElementById("star"+i).style.backgroundColor = newRGB;
+	
+    if(month == 2 && day == 14)
+	{
+		document.getElementById("star"+i).style.backgroundColor = 'transparent';
+	}
+	else
+	{
+		document.getElementById("star"+i).style.backgroundColor = newRGB;
+	}
 	
 	if(t >= screen.availHeight){
 		t=0;
@@ -52,7 +65,17 @@ function genSnowFlakes(sc)
     posx = Math.floor(Math.random() * screen.availWidth); //(i * sc);
 	posy = Math.floor(Math.random() * screen.availHeight)*-1;
 	size = Math.floor(Math.random() * 19)+1;
-  	document.write("<DIV id=star"+i+" style='LEFT: "+posx+"px; POSITION: absolute; TOP: "+posy+"px; height:"+size+"px; width:"+size+"px; background-color:white;'></DIV>");
+    
+	
+	if(month == 2 && day == 14)
+	{
+		document.write("<DIV id=star"+i+" style='LEFT: "+posx+"px; POSITION: absolute; TOP: "+posy+"px; height:"+size+"px; width:"+size+"px; background-color:white;'><IMG SRC='32.png'></DIV>");
+	}
+	else
+	{
+		document.write("<DIV id=star"+i+" style='LEFT: "+posx+"px; POSITION: absolute; TOP: "+posy+"px; height:"+size+"px; width:"+size+"px; background-color:white;'></DIV>");
+	}
+	
   }
   return;
 }
